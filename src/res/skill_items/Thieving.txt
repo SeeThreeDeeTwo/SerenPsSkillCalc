@@ -1,0 +1,11 @@
+Men 4 1
+Silk_Stall 700 1 
+Food_Stall 875 15
+General_Stall 1225 25 
+Fur_Stall_Stall 1750 30
+Spice_Stall 2800 40
+Crafting_Stall 2975 52 
+Gem_Stall_(Ardougne) 3850 65
+Magic_Stall 5600 80
+Scimitar_Stall 6475 92
+Gem_Stall_(Donator_Zone) 7350 95

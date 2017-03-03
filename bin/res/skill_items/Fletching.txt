@@ -1,0 +1,13 @@
+Arrow_Shaft 100 1
+Longbow 200 10
+Oak_Shortbow 330 20
+Longbow 500 25
+Willow_Shortbow 665 35
+Willow_Longbow 830 40
+Maple_Shortbow 1000 50
+Maple_Longbow 1164 55
+Yew_Shortbow 1350 65
+Yew_Longbow 1500 70
+Magic_Shortbow 1664 80
+Magic_Longbow 1830 85
+Dragon_Bolts_(e) 164 71

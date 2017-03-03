@@ -1,0 +1,8 @@
+Normal_Tree_Logs 375 1
+Oak_Tree_Logs 570 15
+Willow_Tree_Logs 1020 30
+Teak_Logs 1294.0 35
+Maple_Tree_Logs 1500.0 45
+Mahogany_Logs 1875 50
+Yew_Tree_Logs 2625 60
+Magic_Tree_Logs 3750 75

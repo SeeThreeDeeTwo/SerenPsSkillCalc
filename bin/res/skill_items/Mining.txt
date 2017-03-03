@@ -1,0 +1,8 @@
+Tin_Ore 450 1
+Copper_Ore 450 1
+Iron_Ore 1575 15
+Coal 2250 30
+Gold_Ore 2925 40
+Mithril_Ore 3600 55
+Adamantite_Ore 4275 70
+Runite_Ore 5625 85

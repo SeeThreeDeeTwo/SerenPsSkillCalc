@@ -1,0 +1,13 @@
+Sardine 0 0
+Anchovies 0 0
+Trout 0 0
+Cod 0 0
+Tuna 0 0
+Salmon 0 0
+Lobster 1225.0 40
+Bass 0 0
+Swordfish 1500.0 45
+Monkfish 2250.0 64
+Shark 3150 80
+Manta_Ray 0 0
+Rocktail 0 0

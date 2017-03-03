@@ -1,0 +1,15 @@
+Attack 0 0
+Strength 0 0
+Anti_Poison 0 0
+Restore 0 0
+Energy 0 0
+Agility 0 0
+Combat 0 0
+Prayer 0 0
+Super_Attack 0 0
+Super_Antipoison 0 0
+Fishing 0 0
+Super_Energy 0 0
+Super_Strength 0 0
+Weapon_Poison 0 0
+(TO_BE_CONT.) 0 0

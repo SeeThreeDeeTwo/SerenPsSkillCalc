@@ -1,0 +1,12 @@
+XP_PER_ESS_USED 0 0
+_Air_Runes 600 1
+_Mind_Runes 660 2
+_Earth_Runes 780 9
+_Fire_Runes 840 14
+_Cosmic_Runes 960 27
+_Chaos_Runes 1020 35
+_Nature_Runes 1080 44
+_Law_Runes 1140 54
+_Death_Runes 1200 65
+_Blood_Runes 1260 77
+_Soul_Runes 1320 88

@@ -1,0 +1,6 @@
+Sapphire 750 20
+Emerald 1005 27
+Ruby 1275 34
+Diamond 1612 43
+Dragonstone 2062 55
+Onyx 2520 67

@@ -1,0 +1,12 @@
+BURYING 0 0
+__Bones 0 0
+__Big_Bones 0 0
+__Ourg_Bones 0 0
+__Dragon_Bones 0 0
+__Frost_Dragon_Bones 0 0
+GILDED_ALTAR 0 0
+__Bones 0 0
+__Big_Bones 0 0
+__Ourg_Bones 0 0
+__Dragon_Bones 0 0
+__Frost_Dragon_Bones 0 0

@@ -1,0 +1,8 @@
+Normal_Logs 600 1
+Oak_Logs 900 15
+Willow_Logs 1350 30
+Teak_Logs 1575 35
+Maple_Logs 2025 45
+Mahogany_Logs 2300 50
+Yew_Logs 3037 60
+Magic_Logs 4550 75

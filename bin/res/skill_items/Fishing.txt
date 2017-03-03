@@ -1,0 +1,5 @@
+Shrimp 450 1
+Tuna 1200 35
+Swordfish 1500 50 
+Monkfish 1800 64
+Shark 1650 76

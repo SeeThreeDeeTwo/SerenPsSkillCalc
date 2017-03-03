@@ -1,0 +1,3 @@
+Gnome_Course 3025 1
+Barbarian_Course 3708 30
+Wilderness_Course 19998.0 52
