@@ -10,4 +10,6 @@ Yew_Shortbow 1350 65
 Yew_Longbow 1500 70
 Magic_Shortbow 1664 80
 Magic_Longbow 1830 85
+Magic_Shortbow_c 1864 80
+Magic_Longbow_c 2030 85
 Dragon_Bolts_(e) 164 71

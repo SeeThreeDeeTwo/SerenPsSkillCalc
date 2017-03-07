@@ -1,5 +1,11 @@
-Shrimp 450 1
+Shrimp 150 1
+Anchovies 600 15
+Cod 675 23
+Pike 900 25
 Tuna 1200 35
+Lobster 1350 40
+Bass 1500 46
 Swordfish 1500 50 
 Monkfish 1800 64
 Shark 1650 76
+Rockfish 0 90
