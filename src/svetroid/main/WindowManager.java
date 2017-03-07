@@ -1,6 +1,7 @@
 package svetroid.main;
 
 import java.awt.Choice;
+import java.awt.Font;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ import java.awt.event.MouseListener;
 import java.text.NumberFormat;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -38,6 +40,7 @@ public class WindowManager {
 	JMenuBar menuBar;
 	JMenu mnFile;
 	JMenuItem mntmReset;
+	JMenuItem mntmReset2;
 	JMenu mnHelp;
 	JMenuItem mntmAbout;
 
@@ -58,6 +61,7 @@ public class WindowManager {
 	JLabel lblYourLevel;
 	JLabel lblYourExperienceString;
 	JLabel lblYourExperience;
+	JCheckBox chckbxPrestige;
 
 	JButton btnCalculate;
 	JButton btnItemXP;
@@ -103,6 +107,8 @@ public class WindowManager {
 
 		mntmReset = new JMenuItem("Double XP Mode");
 		mnFile.add(mntmReset);
+		mntmReset2 = new JMenuItem("Reset");
+		mnFile.add(mntmReset2);
 		
 				mnHelp = new JMenu("Help");
 				menuBar.add(mnHelp);
@@ -124,6 +130,22 @@ public class WindowManager {
 
 		lblListXP = new JLabel("");
 		main.add(lblListXP, 320, 66, 65, 16);
+		
+		JCheckBox chckbxPrestige = new JCheckBox("Prestiged");
+		chckbxPrestige.addItemListener(new ItemListener() {
+		    @Override
+		    public void itemStateChanged(ItemEvent e) {
+		    	double rate = Experience.XP_rate;
+		        if(e.getStateChange() == ItemEvent.SELECTED) {//checkbox has been selected
+		            Experience.XP_rate = rate * 0.40;
+		        } else {//checkbox has been deselected
+		        	Experience.XP_rate = rate * 1.00;
+		        	};
+		    }
+		});
+		chckbxPrestige.setEnabled(true);
+		main.add(chckbxPrestige, 121, 14, 97, 23);
+		chckbxPrestige.setVisible(true);
 
 		lblItemsToTarget = new JLabel("");
 		lblItemsToTarget.setHorizontalAlignment(SwingConstants.CENTER);
@@ -145,6 +167,7 @@ public class WindowManager {
 		lblYourExperience = new JLabel("N/A");
 		main.add(lblYourExperience, 74, 41, 75, 20);
 
+		
 		list = new List();
 		main.add(list, 391, 40, 149, 300);
 
@@ -219,14 +242,26 @@ public class WindowManager {
 				});
 			}
 		};
+		
 		btnItemXP.addMouseListener(mlBtnItemXP);
 
 		mntmReset.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				doubleXpMode();
+				double prst = Experience.XP_rate;
+				lblYourExperienceString.setText("DOUBLE XP");
+				lblYourExperience.setText("ACTIVE");
+				Experience.XP_rate = prst*2.00;
+				mntmReset.setEnabled(false);
 			}
 		});
+		mntmReset2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				resetGUI();
+			}
+		});
+		
 
 		list.addItemListener(new ItemListener() {
 			@Override
@@ -538,35 +573,7 @@ public class WindowManager {
 		itemXP.update();
 	}
 
-	public void doubleXpMode() {
-		Vars.formatterLevel.setAllowsInvalid(true);
-		Vars.formatterXP.setAllowsInvalid(true);
-		textFieldYourSkillXP.setText("");
-		textFieldTargetXP.setText("");
-		textFieldTargetLevel.setText("");
-		textFieldUsername.setText("");
-		lblListXP.setText("");
-		lblCalculate.setText("");
-		lblItemsToTarget.setText("");
-		lblYourLevel.setText("N/A");
-		lblYourExperienceString.setText("DOUBLE XP");
-		lblYourExperience.setText("ACTIVE");
-		Experience.XP_rate = 2.00;
-		list.removeAll();
-		choiceSkill.select(0);
-		if (choiceUserOrXP.getItem(choiceUserOrXP.getSelectedIndex()).equals("Username")) {
-			textFieldUsername.requestFocus();
-		} else if (choiceUserOrXP.getItem(choiceUserOrXP.getSelectedIndex()).equals("Experience")) {
-			textFieldYourSkillXP.requestFocus();
-		}
-		lblTotalLevel_Title.setVisible(false);
-		lblTotalXP_Title.setVisible(false);
-		lblTotalLevel.setVisible(false);
-		lblTotalXP.setVisible(false);
-		Vars.formatterLevel.setAllowsInvalid(false);
-		Vars.formatterXP.setAllowsInvalid(false);
-	}
-	public void restGUI() {
+	public void resetGUI() {
 		Vars.formatterLevel.setAllowsInvalid(true);
 		Vars.formatterXP.setAllowsInvalid(true);
 		textFieldYourSkillXP.setText("");
@@ -578,7 +585,9 @@ public class WindowManager {
 		lblItemsToTarget.setText("");
 		lblYourLevel.setText("N/A");
 		lblYourExperience.setText("N/A");
-		Experience.XP_rate = 15.00;
+		lblYourExperienceString.setText("Experience");
+		Experience.XP_rate = 1.00;
+		mntmReset.setEnabled(true);
 		list.removeAll();
 		choiceSkill.select(0);
 		if (choiceUserOrXP.getItem(choiceUserOrXP.getSelectedIndex()).equals("Username")) {
