@@ -6,3 +6,4 @@ Maple_Logs 2025 45
 Mahogany_Logs 2300 50
 Yew_Logs 3037 60
 Magic_Logs 4550 75
+Cursed_Magic_Logs 18222 85

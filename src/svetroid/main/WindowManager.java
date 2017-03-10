@@ -1,7 +1,7 @@
 package svetroid.main;
 
 import java.awt.Choice;
-import java.awt.Font;
+//import java.awt.Font;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,8 +41,6 @@ public class WindowManager {
 	JMenu mnFile;
 	JMenuItem mntmReset;
 	JMenuItem mntmReset2;
-	JMenu mnHelp;
-	JMenuItem mntmAbout;
 
 	Choice choiceSkill;
 
@@ -83,6 +81,28 @@ public class WindowManager {
 	JFormattedTextField textFieldItemAmount;
 	JLabel lblItemXP;
 	JButton btnCalcXP;
+	private JMenu mnSkillGuides;
+	private JMenuItem mntmAgility;
+	private JMenuItem mntmCooking;
+	private JMenuItem mntmCrafting;
+	private JMenuItem mntmFiremaking;
+	private JMenuItem mntmFishing;
+	private JMenuItem mntmFletching;
+	private JMenuItem mntmFarming;
+	private JMenuItem mntmHerblore;
+	private JMenuItem mntmMining;
+	private JMenuItem mntmRunecrafting;
+	private JMenuItem mntmSlayer;
+	private JMenuItem mntmSmithing;
+	private JMenuItem mntmSummoning;
+	private JMenuItem mntmThieving;
+	private JMenu mnClueScrolls;
+	private JMenu mnWorldMap;
+	private JMenuItem mntmMaps;
+	private JMenuItem mntmCoordinates;
+	private JMenuItem mntmEmoteClues;
+	private JMenuItem mntmHunting;
+	private JMenuItem mnOSRSmap;
 
 	public WindowManager() {
 		initialize();
@@ -96,7 +116,7 @@ public class WindowManager {
 
 		// Main window
 
-		main = new Window("Main", "SerenPS - Skill Calculator", 555, 400, null, false, true);
+		main = new Window("Main", "SerenPS - Assistance Utility", 555, 400, null, false, true);
 		main.start();
 
 		menuBar = new JMenuBar();
@@ -109,12 +129,72 @@ public class WindowManager {
 		mnFile.add(mntmReset);
 		mntmReset2 = new JMenuItem("Reset");
 		mnFile.add(mntmReset2);
-		
-				mnHelp = new JMenu("Help");
-				menuBar.add(mnHelp);
-				
-						mntmAbout = new JMenuItem("About");
-						mnHelp.add(mntmAbout);
+						
+						mnSkillGuides = new JMenu("Skill Guides");
+						menuBar.add(mnSkillGuides);
+						
+						mntmAgility = new JMenuItem("Agility");
+						mnSkillGuides.add(mntmAgility);
+						
+						mntmCooking = new JMenuItem("Cooking");
+						mnSkillGuides.add(mntmCooking);
+						
+						mntmCrafting = new JMenuItem("Crafting");
+						mnSkillGuides.add(mntmCrafting);
+						
+						mntmFarming = new JMenuItem("Farming");
+						mnSkillGuides.add(mntmFarming);
+						
+						mntmFiremaking = new JMenuItem("Firemaking");
+						mnSkillGuides.add(mntmFiremaking);
+						
+						mntmFishing = new JMenuItem("Fishing");
+						mnSkillGuides.add(mntmFishing);
+						
+						mntmFletching = new JMenuItem("Fletching");
+						mnSkillGuides.add(mntmFletching);
+						
+						mntmHerblore = new JMenuItem("Herblore");
+						mnSkillGuides.add(mntmHerblore);
+						
+						mntmHunting = new JMenuItem("Hunting");
+						mnSkillGuides.add(mntmHunting);
+						
+						mntmMining = new JMenuItem("Mining");
+						mnSkillGuides.add(mntmMining);
+						
+						mntmRunecrafting = new JMenuItem("Runecrafting");
+						mnSkillGuides.add(mntmRunecrafting);
+						
+						mntmSlayer = new JMenuItem("Slayer");
+						mnSkillGuides.add(mntmSlayer);
+						
+						mntmSmithing = new JMenuItem("Smithing");
+						mnSkillGuides.add(mntmSmithing);
+						
+						mntmSummoning = new JMenuItem("Summoning");
+						mnSkillGuides.add(mntmSummoning);
+						
+						mntmThieving = new JMenuItem("Thieving");
+						mnSkillGuides.add(mntmThieving);
+						
+						mnClueScrolls = new JMenu("Clue Scrolls");
+						menuBar.add(mnClueScrolls);
+						
+						mntmCoordinates = new JMenuItem("Coordinate Clues");
+						mnClueScrolls.add(mntmCoordinates);
+						
+						mntmEmoteClues = new JMenuItem("Emote Clues");
+						mnClueScrolls.add(mntmEmoteClues);
+						
+						mntmMaps = new JMenuItem("Map Clues");
+						mnClueScrolls.add(mntmMaps);
+						
+						mnWorldMap = new JMenu("World Map");
+						menuBar.add(mnWorldMap);
+						
+						mnOSRSmap = new JMenuItem("OSRS Map");
+						mnWorldMap.add(mnOSRSmap);
 
 		lblTotalLevel_Title = new JLabel("Total Level:");
 		main.add(lblTotalLevel_Title, 10, 300, 65, 20, false);
@@ -262,7 +342,242 @@ public class WindowManager {
 			}
 		});
 		
-
+		// Guides Menu ------------
+		
+		mntmCooking.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/1144-1-99-cooking-guide"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+		mntmCrafting.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/1202-1-99-crafting-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+		mntmFiremaking.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/1129-1-99-firemaking-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+		/* mntmFishing.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        try{ 
+		            String url = ""; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		}); */
+		mntmFletching.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/1205-1-99-fletching-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+	/*	mntmFarming.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = ""; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});		*/
+		mntmHerblore.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/986-1-99-herblore-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+		mntmHunting.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/1198-1-99-hunter-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+		mntmMining.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/934-1-99-mining-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+		mntmRunecrafting.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/937-1-99-runecrafting-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+		mntmSlayer.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/1206-comprehensive-slayer-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+		/* mntmSmithing.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/1205-1-99-fletching-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		}); */
+		mntmSummoning.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/632-1-99-summoning-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+		mntmThieving.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://community.serenps.com/index.php?/topic/977-1-99-thieving-guide/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		});
+		 mnOSRSmap.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://OSRSmap.com/"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		}); 
+		 mntmMaps.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://runescape.wikia.com/wiki/Treasure_Trails/Guide/Maps"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		}); 
+		 mntmCoordinates.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://runescape.wikia.com/wiki/Treasure_Trails/Guide/Coordinates"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		}); 
+		 mntmEmoteClues.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+		        // TODO add your handling code here:
+		        try{ 
+		            String url = "http://runescape.wikia.com/wiki/Treasure_Trails/Guide/Emotes"; 
+		            java.awt.Desktop.getDesktop().browse(java.net.URI.create(url)); 
+		          } 
+		          catch (java.io.IOException e) { 
+		              System.out.println(e.getMessage()); 
+		          } 
+		    }
+		}); 
+		
+		// Guides Menu End -----------------
+		
 		list.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
