@@ -1,12 +1,13 @@
 package svetroid.main;
 
-import java.awt.Choice;
-import java.awt.List;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JList;
 
 public class SkillManager {
 
@@ -15,35 +16,35 @@ public class SkillManager {
 
 	public String lblListXPString;
 
-	public void addSkillItemsToMenu(Choice choiceSkill) {
+	public void addSkillItemsToMenu(JComboBox<String> choiceSkill) {
 		fl.loadItems();
 		for (int i = 0; i < Vars.skillList.size(); i++) {
 			if (Vars.skillList.get(i).getLineNumber() > 0) {
-				choiceSkill.add(Vars.skillList.get(i).getName());
+				choiceSkill.addItem(Vars.skillList.get(i).getName());
 			}
 		}
 	}
 
-	public void updateChoices(Skill skill, Choice choiceSkill, List list) {
-		if (choiceSkill.getItem(choiceSkill.getSelectedIndex()).equals(skill.getName())) {
-			list.removeAll();
+	public void updateChoices(Skill skill, JComboBox<String> choiceSkill, JList<String> list) {
+		if (selected(choiceSkill).equals(skill.getName())) {
+			listModel(list).clear();
 			addItemsToList(skill, list);
 		}
 	}
 
-	public void updateList(Skill skill, Choice choiceSkill, List list, JLabel lblListXP) {
-		if (choiceSkill.getItem(choiceSkill.getSelectedIndex()).equals(skill.getName())) {
+	public void updateList(Skill skill, JComboBox<String> choiceSkill, JList<String> list, JLabel lblListXP) {
+		if (selected(choiceSkill).equals(skill.getName())) {
 			changeXP(skill, list, lblListXP);
 		}
 	}
 
-	public void calculateLogic(Skill skill, Choice choiceSkill, List list, JFormattedTextField textFieldYourSkillXP, JFormattedTextField textFieldUsername, JFormattedTextField textFieldTargetLevel, JFormattedTextField textFieldTargetXP, JLabel lblCalculate, JLabel lblItemsToTarget) {
+	public void calculateLogic(Skill skill, JComboBox<String> choiceSkill, JList<String> list, JFormattedTextField textFieldYourSkillXP, JFormattedTextField textFieldUsername, JFormattedTextField textFieldTargetLevel, JFormattedTextField textFieldTargetXP, JLabel lblCalculate, JLabel lblItemsToTarget) {
 		if ((!textFieldYourSkillXP.getText().isEmpty() && !textFieldTargetLevel.getText().isEmpty()) || (!textFieldUsername.getText().isEmpty() && !textFieldTargetLevel.getText().isEmpty()) || (!textFieldYourSkillXP.getText().isEmpty() && !textFieldTargetXP.getText().isEmpty()) || (!textFieldUsername.getText().isEmpty() && !textFieldTargetXP.getText().isEmpty())) {
 			XPDifference = Experience.yourTargetXP - Experience.yourCurrentXP;
 			if (XPDifference <= 0) {
 				lblCalculate.setText("Error! XP difference less than 1.");
 			} else if (XPDifference > 0) {
-				if (choiceSkill.getItem(choiceSkill.getSelectedIndex()).equals(skill.getName())) {
+				if (selected(choiceSkill).equals(skill.getName())) {
 					if (checkLevelValidity(skill, list) == true) {
 						doCalc(choiceSkill, list, lblCalculate, lblItemsToTarget);
 					} else {
@@ -57,18 +58,18 @@ public class SkillManager {
 		}
 	}
 
-	public void doCalc(Choice choiceSkill, List list, JLabel lblCalculate, JLabel labelItemsToTarget) {
+	public void doCalc(JComboBox<String> choiceSkill, JList<String> list, JLabel lblCalculate, JLabel labelItemsToTarget) {
 		lblCalculate.setText("XP Difference: " + NumberFormat.getInstance(Locale.getDefault()).format(XPDifference));
-		if (choiceSkill.getItem(choiceSkill.getSelectedIndex()).equals("Agility")) {
+		if (selected(choiceSkill).equals("Agility")) {
 			labelItemsToTarget.setText(NumberFormat.getInstance(Locale.getDefault()).format(Math.ceil(XPDifference / Experience.currentItemXP)) + " laps.");
 		} else {
-			labelItemsToTarget.setText(NumberFormat.getInstance(Locale.getDefault()).format(Math.ceil(XPDifference / Experience.currentItemXP)) + " " + list.getItem(list.getSelectedIndex()));
+			labelItemsToTarget.setText(NumberFormat.getInstance(Locale.getDefault()).format(Math.ceil(XPDifference / Experience.currentItemXP)) + " " + list.getSelectedValue());
 		}
 	}
 
-	public void changeXP(Skill skill, List list, JLabel lbl) {
+	public void changeXP(Skill skill, JList<String> list, JLabel lbl) {
 		for (int i = 0; i < skill.getItems().size(); i++) {
-			if (list.getItem(list.getSelectedIndex()).equals(skill.getItems().get(i).getName())) {
+			if (list.getSelectedValue() != null && list.getSelectedValue().equals(skill.getItems().get(i).getName())) {
 				lbl.setText(String.format("%.1f", (skill.getItems().get(i).getExp() * Experience.XP_rate)) + " XP");
 				lblListXPString = lbl.getText();
 				Experience.currentItemXP = skill.getItems().get(i).getExp() * Experience.XP_rate;
@@ -76,17 +77,27 @@ public class SkillManager {
 		}
 	}
 
-	public void addItemsToList(Skill skill, List list) {
+	public void addItemsToList(Skill skill, JList<String> list) {
 		for (int i = 0; i < skill.getItems().size(); i++) {
-			list.add(skill.getItems().get(i).getName());
+			listModel(list).addElement(skill.getItems().get(i).getName());
 		}
 	}
 
-	public boolean checkLevelValidity(Skill skill, List list) {
+	public boolean checkLevelValidity(Skill skill, JList<String> list) {
 		if (Experience.yourCurrentLevel < skill.getItems().get(list.getSelectedIndex()).getLevelReq()) {
 			return false;
 		}
 		return true;
+	}
+
+	private String selected(JComboBox<String> combo) {
+		Object item = combo.getSelectedItem();
+		return item == null ? "" : item.toString();
+	}
+
+	@SuppressWarnings("unchecked")
+	private DefaultListModel<String> listModel(JList<String> list) {
+		return (DefaultListModel<String>) list.getModel();
 	}
 
 }

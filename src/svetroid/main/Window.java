@@ -1,16 +1,11 @@
 package svetroid.main;
 
 import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.Font;
+import java.awt.Container;
 import java.awt.LayoutManager;
 import java.util.ArrayList;
-import java.util.Enumeration;
 
 import javax.swing.JFrame;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.plaf.FontUIResource;
 
 public class Window {
 
@@ -23,19 +18,7 @@ public class Window {
 	private int xPos;
 	private int yPos;
 
-	public void start() {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public Window(String name, String title, int width, int height, LayoutManager lm, boolean isResizable, boolean isVisible) {
-		setUI(Vars.fontList.get(0), 12);
 		this.name = name;
 		this.width = width;
 		this.height = height;
@@ -44,9 +27,11 @@ public class Window {
 		jframe.setResizable(isResizable);
 		jframe.setTitle(title);
 		jframe.setSize(width, height);
-		jframe.getContentPane().setLayout(lm);
+		if (lm != null) {
+			jframe.getContentPane().setLayout(lm);
+		}
 		if (getName().equalsIgnoreCase("Main")) {
-			this.setPos(Vars.screenSize.width / 2 - width / 2, Vars.screenSize.height / 2 - height / 1);
+			this.setPos(Vars.screenSize.width / 2 - width / 2, Vars.screenSize.height / 2 - height / 2);
 			jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		} else {
 			jframe.setLocationRelativeTo(null);
@@ -111,45 +96,17 @@ public class Window {
 		jframe.add(comp);
 	}
 
-	public void add(Component comp, boolean isVisible) {
-		jframe.add(comp);
-		comp.setVisible(isVisible);
+	public void add(Component comp, Object constraints) {
+		jframe.add(comp, constraints);
 	}
 
-	public void add(Component comp, int x, int y, int width, int height) {
-		comp.setBounds(x, y, width, height);
-		jframe.add(comp);
-	}
-
-	public void add(Component comp, int x, int y, int width, int height, boolean isVisible) {
-		comp.setBounds(x, y, width, height);
-		jframe.add(comp);
-		comp.setVisible(isVisible);
+	public Container getContentPane() {
+		return jframe.getContentPane();
 	}
 
 	public void destroy() {
 		windowList.remove(this);
 		this.jframe.dispose();
-	}
-
-	private void setUI(Font font, int fontSize) {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			setUIFont(new FontUIResource(font.deriveFont(Font.PLAIN, fontSize)));
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void setUIFont(FontUIResource fr) {
-		Enumeration<Object> keys = UIManager.getDefaults().keys();
-		while (keys.hasMoreElements()) {
-			Object key = keys.nextElement();
-			Object value = UIManager.get(key);
-			if (value != null && value instanceof FontUIResource) {
-				UIManager.put(key, fr);
-			}
-		}
 	}
 
 }
